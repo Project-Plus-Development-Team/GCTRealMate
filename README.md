@@ -13,4 +13,4 @@ GCTRealMate AKA GCTRM is a command line program that operates as a sort of [macr
 ## Basic Use
 Drag a \*.txt file in the format specified by the file specification over the GCTRM executable. This will output a \*.GCT file with the same name as the \*.txt file.
   
-**NOTE: This only works on Windows 10/11 at the moment. More platforms to follow.**
+**NOTE: GCTRM only works on Windows 10/11 at the moment. More platforms to follow.**
