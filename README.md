@@ -52,14 +52,14 @@ Pulse calls are useful when you need to run some code every frame, without a dis
 Example:  
 PULSE  
 {  
-&nbsp;&nbsp;&nbsp;lis r3,0x8020  
-&nbsp;&nbsp;&nbsp;ori r3,r3,0x0984  
-&nbsp;&nbsp;&nbsp;icbi r0,r3  
-&nbsp;&nbsp;&nbsp;lis r3,0x801E  
-&nbsp;&nbsp;&nbsp;ori r3,r3,0x9A2C  
-&nbsp;&nbsp;&nbsp;icbi r0,r3  
-&nbsp;&nbsp;&nbsp;isync  
-&nbsp;&nbsp;&nbsp;blr  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lis r3,0x8020  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ori r3,r3,0x0984  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;icbi r0,r3  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lis r3,0x801E  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ori r3,r3,0x9A2C  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;icbi r0,r3  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isync  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;blr  
 }  
 ### Include Other Files
 To include other ASM files akin to including headers in C, follow \'.include\' with the path to the ASM file.
