@@ -21,7 +21,7 @@ Example:
 \* 225664EC 00000000  
 
 ### PPC ASM
-There are currently 3 ways to embed ASM into a codeset:
+There are currently 4 ways to embed ASM into a codeset:
 
 #### Hook Calls
 Hook calls are useful when you want to run some code at a location, then return back to that location and continue running intended code.  
@@ -60,7 +60,12 @@ PULSE
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;icbi r0,r3  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isync  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;blr  
-}  
+}
+#### op Calls
+op calls are useful when you want to overwrite a single line of code with another line of code.  
+  
+Example:  
+op bge- 0x14C 	@ $80055444
 ### Include Other Files
 To include other ASM files akin to including headers in C, follow \'.include\' with the path to the ASM file.
   
