@@ -63,13 +63,39 @@ PULSE
 }
 #### op Calls
 op calls are useful when you want to overwrite a single line of code with another line of code.  
-  
 Example:  
 op bge- 0x14C 	@ $80055444
+### Macros
+Macros work in a way that is similar to C-type functions. You provide the name of the macro, arguments, and within the macro body you provide a code that utilizes those arguments.  
+  
+Example:  
+.macro ModuleCmd(\<module\>, \<cmd\>)  
+{  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lwz r3, 0xD8(r31)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lwz r3, \<module\>(r3)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lwz r12, 0x0(r3)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lwz r12, \<cmd\>(r12)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mtctr r12  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bctrl  
+}  
+### Aliases
+An alias is essentially a C-type variable. You provide the name of the alias and the value to the right of the name after an equal sign symbol. You can utilize logic and arthimetic symbols within the alias to further give it meaning. Aliases are also definable within macros, code calls, and hook calls.  
+  
+Example 1:  
+.alias Teeter_Loc = 0x80546120  
+  
+Example 2:  
+.macro LoadAddress(\<arg1\>,\<arg2\>)  
+{  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.alias temp_Hi = \<arg2\> / 0x10000  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.alias temp_Lo = \<arg2\> & 0xFFFF  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lis \<arg1\>, temp_Hi  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ori \<arg1\>,\<arg1\>, temp_Lo  
+}  
 ### Include Other Files
 To include other ASM files akin to including headers in C, follow \'.include\' with the path to the ASM file.
   
-Example:
+Example:  
 .include ExampleFolder/Example.asm
 
 ## Basic Use
